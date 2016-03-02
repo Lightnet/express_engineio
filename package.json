@@ -1,0 +1,16 @@
+{
+  "name": "express_engineio",
+  "description": "simple test using the express engine.io",
+  "version": "0.0.1",
+  "author": {
+    "name": "",
+    "email": ""
+    },
+  "license": "cc",
+  "main": "index.html",
+  "dependencies" : {
+    "express": "4.13.4",
+    "engine.io":"latest",
+    "engine.io-client":"latest"
+  }
+}
