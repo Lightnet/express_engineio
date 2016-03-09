@@ -1,23 +1,16 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <script type="text/javascript" src="/long.min.js"></script><!--Load order -->
+    <script type="text/javascript" src="/bytebuffer.min.js"></script><!--Load order -->
+    <script type="text/javascript" src="/protobuf.min.js"></script><!--Load order -->
     <script type="text/javascript" src="/engine.io.js"></script>
-    <script type="text/javascript">
-    //webkit work with binary data code
-    //web broswer doesn't work with binary data code
-    //It is base on testing how to set up.
-    var socket = eio('ws://localhost:3000');
-    socket.on('open', function(){
-      socket.send('pong');//send text string
-      socket.on('message', function(data){
-        console.log(data);//display data
-      });
-      socket.on('close', function(){});
-    });
-    </script>
+    <script type="text/javascript" src="/index.js"></script>
   </head>
   <body>
     <p>Hello World!</p>
     <p>Engine.io with client script.</p>
+    <button onclick="send();">Send</button>
+    <button onclick="requestmsg();">Rquest Server Message</button>
   </body>
 </html>

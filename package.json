@@ -11,6 +11,7 @@
   "dependencies" : {
     "express": "4.13.4",
     "engine.io":"latest",
-    "engine.io-client":"latest"
+    "engine.io-client":"latest",
+	"protobufjs":"latest"
   }
 }
