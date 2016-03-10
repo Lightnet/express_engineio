@@ -3,6 +3,8 @@ var app = express();
 var http = require('http').Server(app);
 var path = require('path');
 var ProtoBuf = require("protobufjs");
+var ByteBuffer = ProtoBuf.ByteBuffer; // ProtoBuf.js uses and also exposes ByteBuffer.js
+var Long = ProtoBuf.Long;  // as well as Long.js (not used in this example)
 
 //file for index.html
 app.use("/", express.static('./public'));
@@ -20,17 +22,40 @@ var engine = require('engine.io');
 var engineio = new engine.Server({ 'transports': ['websocket', 'polling'] });
 engineio.attach(http);
 //console.log(engineio);
+//console.log(ByteBuffer);
+var bb = new ByteBuffer()
+            .writeIString("Hello world! Server!")
+            .flip()
+            .toBuffer();
+
+//console.log(bb.readIString()+" from bytebuffer.js");
+//console.log(bb.toArrayBuffer());
+//console.log(bb.toBuffer());
+console.log(bb);
 
 engineio.on('connection', function (socket) {
-    socket.send('ping');//send text string
+    console.log("server data...");
+    //console.log(bb);
+    socket.send(bb);
 
-    var smsg = new Message("server message");
+
+    //socket.send('ping');//send text string
+    //socket.send(bb.toArrayBuffer());
+    var smsg = new Message("server message. server");
     socket.send(smsg.toArrayBuffer());
     //console.log(smsg);
 
     socket.on('message', function (data) {
-        //console.log("data...");
+        console.log("client data...");
         console.log(data);
+        try {
+            var source = new ByteBuffer.wrap(data).flip().readIString();
+            console.log(source);
+        } catch (err) {
+            //console.log("server side...");
+            //console.log("Processing failed:", err);
+        }
+
         try {
             // Decode the Message
             var msg = Message.decode(data);
@@ -49,7 +74,6 @@ engineio.on('connection', function (socket) {
             var smsg = new Message("request server message");
             socket.send(smsg.toArrayBuffer());
         }
-
 
     });
     socket.on('close', function () {
