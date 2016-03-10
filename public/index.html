@@ -1,17 +1,30 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <script type="text/javascript" src="/long.min.js"></script><!--Load order -->
-    <script type="text/javascript" src="/bytebuffer.min.js"></script><!--Load order -->
-    <script type="text/javascript" src="/protobuf.min.js"></script><!--Load order -->
-    <script type="text/javascript" src="/engine.io.js"></script>
-    <script type="text/javascript" src="/index.js"></script>
-  </head>
-  <body>
-    <p>Hello World!</p>
-    <p>Engine.io with client script.</p>
-    <input id="textinput" type="text" value="text">
-    <button onclick="send();">Send</button>
-    <button onclick="requestmsg();">Rquest Server Message</button>
-  </body>
+    <head>
+        <script type="text/javascript" src="/smoothie.js"></script>
+        <script type="text/javascript" src="/long.min.js"></script><!--Load order -->
+        <script type="text/javascript" src="/bytebuffer.min.js"></script><!--Load order -->
+        <script type="text/javascript" src="/protobuf.min.js"></script><!--Load order -->
+        <script type="text/javascript" src="/engine.io.js"></script>
+        <script type="text/javascript" src="/index.js"></script>
+    </head>
+    <body>
+        <h1>engine.io latency <span id="latency"></span></h1>
+        <h2>transport: <label id="transport">(connecting)</label></h2>
+        <canvas id="mycanvas" width="400" height="100"></canvas>
+
+        <p>engine.io-client script.</p>
+        <label> Protobuf :</label>
+        <input id="textinput" type="text" value="text">
+        <button onclick="send();">Send</button>
+        <button onclick="requestmsg();">Rquest Server Message</button>
+        <br>
+        <label> Bytebuffer :</label>
+        <input id="bufferinput" type="text" value="buffer text">
+        <button onclick="send_buffer();">Send</button>
+        <br>
+        <br>
+        Share libraries : dcodeIO/ProtoBuf.js, dcodeIO/bytebuffer.js
+
+    </body>
 </html>

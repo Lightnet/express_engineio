@@ -31,7 +31,7 @@ var bb = new ByteBuffer()
 //console.log(bb.readIString()+" from bytebuffer.js");
 //console.log(bb.toArrayBuffer());
 //console.log(bb.toBuffer());
-console.log(bb);
+//console.log(bb.length);
 
 engineio.on('connection', function (socket) {
     console.log("server data...");
@@ -46,8 +46,12 @@ engineio.on('connection', function (socket) {
     //console.log(smsg);
 
     socket.on('message', function (data) {
-        console.log("client data...");
-        console.log(data);
+        //console.log("client data...");
+        //console.log(data);
+        if(data == 'Latency'){
+            socket.send('Latency');
+        }
+
         try {
             var source = new ByteBuffer.wrap(data).flip().readIString();
             console.log(source);

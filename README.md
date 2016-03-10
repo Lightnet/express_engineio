@@ -1,16 +1,16 @@
 # express_engineio
 
- Created by:Lightnet
- 
+ Created by: Lightnet
+
  license:CCO
 
   Information:
 By using the express, engine.io, engine.io-client
-and protobufjs to handle nodejs server and web 
+and protobufjs to handle nodejs server and web
 browser access wrap around the web socket connection
 in bi-directional connection.
 
-Sharing libraries to must have bi-directional 
+Sharing libraries to must have bi-directional
 connection to have same functions that share nodejs
 and javascript browser to able to code and decode
 binary buffer data.
@@ -24,7 +24,7 @@ build of the engine.io.
   * Engine.io
   * Engine.io-client
   * protobufjs
-  
+
 [build & run]
 ```
 cmd line
@@ -33,6 +33,12 @@ npm install
 
 node server.js
 ```
+
+ Base Examples from:
+  * https://github.com/socketio/engine.io/tree/master/examples/latency
+  * https://github.com/dcodeIO/protobuf.js/tree/master/examples/websocket
+  * https://github.com/dcodeIO/bytebuffer.js/tree/master/tests
+  * http://smoothiecharts.org/
 
 Credits:
  * Playcanvas tanx game.
