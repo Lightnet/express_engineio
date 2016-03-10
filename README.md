@@ -5,10 +5,10 @@
  license:CCO
 
   Information:
-By using the express, engine.io, engine.io-client
-and protobufjs to handle nodejs server and web
-browser access wrap around the web socket connection
-in bi-directional connection.
+By using the express, engine.io, engine.io-client,
+ByteBuffer, and protobufjs to handle nodejs server
+and web browser access wrap around the web socket
+connection in bi-directional.
 
 Sharing libraries to must have bi-directional
 connection to have same functions that share nodejs
@@ -19,11 +19,21 @@ The library that I used is protobufjs to send and
 receive object class message style. This is simple
 build of the engine.io.
 
+ Features:
+  * This bare minimal of coding.
+  * Display latency chart graph.
+  * Simple Message "/example.proto" for ProtoBuf.js
+  * Simple ByteBuffer string send and receive buffer
+    * Note Byte need to flip send and receive buffer size
+  * Using the web browser to access web socket.
+  * Share libraries have similar setup for ease of access for send and receive buffer binary.
+   * Some examples.
+
  Nodejs packges:
   * Express
   * Engine.io
   * Engine.io-client
-  * protobufjs
+  * protobufjs (build with bytebuffer)
 
  Web browser libraries:
   * long.min.js (load order 1)
