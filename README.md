@@ -25,6 +25,16 @@ build of the engine.io.
   * Engine.io-client
   * protobufjs
 
+ Web browser libraries:
+  * long.min.js (load order 1)
+  * bytebuffer.min.js (load order 2)
+  * protobuf.min.js (load order 3)
+  * engine.io.js (from npm engine.io-client)
+  * smoothie.js (display chart)
+
+  Note the long, bytebuffer, and protobuf has to load
+ in order for html script to work.
+
 [build & run]
 ```
 cmd line
