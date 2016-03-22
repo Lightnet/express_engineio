@@ -73,10 +73,9 @@ console.log(src);
 console.log(src.length);
 console.log("=====");
 */
-console.log(ByteBuffer.DEFAULT_CAPACITY);
+//console.log(ByteBuffer.DEFAULT_CAPACITY);
 
 var last;
-
 function send_Latency(){
   last = new Date;
   engineio.send('Latency');
@@ -111,8 +110,6 @@ engineio.on('open', function(){
             line1.append(+new Date, latency)
             setTimeout(send_Latency, 100);
         }
-
-
         //console.log(ByteBuffer(data));
         try{
             var source = new ByteBuffer.wrap(data).flip().readIString();
@@ -164,6 +161,27 @@ function send_buffer() {
                     .toBuffer();
         engineio.send(bb_text);
         console.log("Sent: "+bb_text);
+    } else {
+        console.log("Not connected");
+    }
+}
+
+function test_buffer() {
+    if (engineio != null) {
+        var inputtext = document.getElementById('bufferinput');
+        console.log(inputtext.value);
+        var bb_text = new ByteBuffer();
+        console.log(bb_text);
+        console.log(bb_text.limit);
+        //console.log(bb_text.capacity());
+        bb_text.writeIString(inputtext.value)
+                    .flip()
+                    .toBuffer();
+        console.log(bb_text.limit);
+        //console.log(bb_text.capacity());
+        //engineio.send(bb_text);
+        //console.log("Sent: "+bb_text);
+        console.log(bb_text);
     } else {
         console.log("Not connected");
     }
